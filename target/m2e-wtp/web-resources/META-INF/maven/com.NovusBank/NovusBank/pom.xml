@@ -14,19 +14,11 @@
   <name>NovusBank Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-   
-
-  <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+  <dependencies> 
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,14 +26,24 @@
 			<scope>test</scope>
 		</dependency>
 		
-    <dependency> 
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
-  </dependencies>
+	<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-tomcat</artifactId>
+	<scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+	<groupId>javax.servlet</groupId>
+	<artifactId>jstl</artifactId>
+	</dependency>
+	
+	<dependency>
+	<groupId>org.apache.tomcat.embed</groupId>
+	<artifactId>tomcat-embed-jasper</artifactId>
+	<scope>provided</scope>
+	</dependency>
+		
+</dependencies>
   
   <build>
     <finalName>NovusBank</finalName>
