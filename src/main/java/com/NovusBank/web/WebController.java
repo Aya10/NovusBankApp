@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebController {
 
 	@RequestMapping("/")  
-    public String hello()  {  
-        return "homepage";  
+    public String Login()  {  
+        return "login";  
     }   
+	
+	@RequestMapping("/SignUp")
+	public String SignUp() {
+		return "signup";
+	}
+	
 	
 }

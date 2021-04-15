@@ -45,7 +45,7 @@
 		</div>
 		<button class="signin-btn">LOGIN</button>
 		<div class="sign-up">
-			<a href="a">New to Novus Bank? Sign Up Here</a>
+			<a href="/SignUp">New to Novus Bank? Sign Up Here</a>
 		</div>
 
 
