@@ -8,7 +8,7 @@ public class WebController {
 
 	@RequestMapping("/")  
     public String hello()  {  
-        return "signup";  
+        return "homepage";  
     }   
 	
 }
