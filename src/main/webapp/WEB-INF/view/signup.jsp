@@ -42,7 +42,7 @@
 			<button class="signup-btn" type="submit">Sign Up</button>
 		</form:form>
 		<div class="sign-in">
-			<a href="/">Already have a Novus Bank Account? Login Up Here</a>
+			<a href="/">Already have a Novus Bank Account? Login Here</a>
 		</div>
 		
 		

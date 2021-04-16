@@ -24,11 +24,11 @@ public class WebController {
     public String Login(Model model)  {  
 		Configuration con = new Configuration().configure().addAnnotatedClass(User.class);
 		  
-		   StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		   
-		   SessionFactory sf = con.buildSessionFactory(reg);
+		SessionFactory sf = con.buildSessionFactory(reg);
 
-		   session = sf.openSession(); 
+		session = sf.openSession(); 
 		   
         return "login";  
     }   
@@ -45,7 +45,7 @@ public class WebController {
 		session.save(user);  
 	    t.commit();
 		
-		return "login";
+		return "homepage";
 	}
 	
 	
