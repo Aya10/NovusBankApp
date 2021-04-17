@@ -17,28 +17,49 @@
 		<div class="title">Novus Bank</div>
 		<div class="subtitle">Banking with Novus</div>
 		<form:form method="POST" modelAttribute="userForm" action="/formSubmitted">
-		
+		<div class="fname">
 		<form:label path="firstName">
-			<form:input path="firstName" id="firstName" type="text" placeholder="First Name"></form:input>
-		<label for="firstName"> First Name </label>
+			<form:input path="firstName" id="firstName" type="text" placeholder="First Name"
+			cssStyle="font-size:18px; padding: 10px 20px 10px 5px; width:325px; border:none; outline:none; background:none;"
+			></form:input>
+		
 		</form:label>
+		</div>
+		<div class="lname">
 		<form:label path="lastName">
-			<form:input path="lastName" id="lastName" type="text" placeholder="Last Name"></form:input>
-		<label for="lastName"> Last Name </label>
+			<form:input path="lastName" id="lastName" type="text" placeholder="Last Name"
+			cssStyle="font-size:18px; padding: 10px 20px 10px 5px; width:325px; border:none; outline:none; background:none;"
+			></form:input>
+		
 		</form:label>
+		</div>
+		
+		<div class="dob">
 		<form:label path="dob">
-			<form:input path="dob" id="dob" type="int" placeholder="Date of Birth"></form:input>
-		<label for="dob"> Date of Birth </label>
+			<form:input path="dob" id="dob" type="int" placeholder="Date of Birth"
+			cssStyle="font-size:18px; padding: 10px 20px 10px 5px; width:325px; border:none; outline:none; background:none;"
+			></form:input>
+		
 		</form:label>
+		</div>
+		
+		<div class="email">
 		<form:label path="email">
-			<form:input path="email" id="email" type="text" placeholder="Email"></form:input>
-		<label for="email"> Email </label>
+			<form:input path="email" id="email" type="text" placeholder="Email"
+			cssStyle="font-size:18px; padding: 10px 20px 10px 5px; width:325px; border:none; outline:none; background:none;"
+			></form:input>
+		
 		</form:label>
+		</div>
+		
+		<div class="phone">
 		<form:label path="phoneNumber">
-			<form:input path="phoneNumber" id="phoneNumber" type="text" placeholder="Phone Number"></form:input>
-		<label for="phoneNumber"> Phone Number</label>
+			<form:input path="phoneNumber" id="phoneNumber" type="text" placeholder="Phone Number"
+			cssStyle="font-size:18px; padding: 10px 20px 10px 5px; width:325px; border:none; outline:none; background:none;"
+			></form:input>
+		
 		</form:label>
-
+		</div>
 			<button class="signup-btn" type="submit">Sign Up</button>
 		</form:form>
 		<div class="sign-in">
