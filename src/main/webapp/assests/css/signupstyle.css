@@ -70,6 +70,10 @@ button.signup-btn{
 	margin-bottom:5px;
 }
 
+button.signup-btn:hover{
+	background-color:#3C57A8;
+}
+
 .sign-in{
 	text-align:center;
 }

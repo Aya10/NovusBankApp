@@ -11,24 +11,37 @@
 	rel="stylesheet">
 </head>
 <body>
+
 <div class="banner-area">
 	<header>
 		<a href="#" class="logo">novus</a>
+		<a href="/" class="logout">Log Out</a>
 		
-		<ul class="menu">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Transfers</a></li>
-		<li><a href="/">Log Out</a></li>		
-		</ul>
 	</header>
-	
-	<div class="banner-text">
-		<h2>Novus Banking</h2>
-		<p>Banking with Novus</p>
-	</div>
-	
 </div>
-	
+<div class="banner-text">
+	<h2>Novus Banking</h2>
+	<p>Banking at Novus</p>
+	<div class="container">
+    <div class="item">
+    	<h2>Welcome</h2>
+    	<h5>Accounts:</h5>
+    </div>
+    <div class="item">
+    	<h2>Transfer</h2>
+    	<div class="amount">
+				<div class="form">
+				<input class="amount" type="text" placeholder="amount"/>
+				</div>
+			</div>
+			
+			<button class="submit-btn" type="submit">Submit</button>
+			
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>

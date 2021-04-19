@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 *{
 	font-family:'Lato','sans-serif';
 
@@ -20,35 +21,6 @@ padding:0;
 	padding:15px 60px;
 }
 
-.menu{
-	width: 42%;
-	float:right;
-	list-style:none;
-}
-
-.menu li{
-	width:100px;
-	height:50px;
-	line-height: 50px;
-	text-align:center;
-	color:#fff;
-	font-size:13px;
-	float:left;
-}
-
-.menu li:hover{
-	background:#3C57A8;
-}
-.menu li:hover a{
-	color:black;
-}
-
-
-.menu li a{
-	text-decoration:none;
-	color:#fff;
-	text-transform:uppercase;
-}
 
 .logo{
 	text-decoration:none;
@@ -60,6 +32,16 @@ padding:0;
 	float:left;
 }
 
+.logout{
+	text-decoration:none;
+	color:#fff;
+	font-size:30px;
+	font-weight:bolder;
+	padding:20px 0;
+	width:20%;
+	float:right;
+}
+
 .banner-text{
 	position:absolute;
 	top:50%;
@@ -67,4 +49,55 @@ padding:0;
 	transform: translate(-50%,-50%);
 	color:#fff;
 	text-align:center;
+}
+
+
+
+
+.item {
+   float: left;
+  width: 250px;
+  height: 250px;
+  background-color:#fff;
+  color:#000;
+  margin: 5px
+}
+
+
+.form{
+	width:100%;
+	margin-top:15px;
+}
+
+.form input{
+	font-size:18px;
+	padding: 5px 10px 5px 2.5px;
+	border:none;
+	outline:none;
+	background:none;
+	
+}
+
+.amount{
+	display:block;
+	border-radius:38px;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:10px;
+	margin:10px 0;
+	
+}
+
+button.submit-btn{
+	width:100%;
+	padding:12px;
+	border:none;
+	font-size:18px;
+	border-radius:30px;
+	background-color:#567DF4;
+	color:#fff;
+	margin-bottom:5px;
+}
+
+button.submit-btn:hover{
+	background-color:#3C57A8;
 }

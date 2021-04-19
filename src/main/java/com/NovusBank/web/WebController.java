@@ -20,7 +20,8 @@ public class WebController {
 	@RequestMapping("/")  
     public String Login(Model model)  {  
 		model.addAttribute("userLogin", new User());
-        return "login";  
+        return "homepage";  
+
     }   
 	
 	@RequestMapping("/SignUp")

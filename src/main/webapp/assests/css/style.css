@@ -41,22 +41,14 @@ body{
 .subtitle{
 	font-size:18px;
 }
-
 .form{
 	width:100%;
 	margin-top:30px;
 }
 
-.form input{
-	font-size:18px;
-	padding: 10px 20px 10px 5px;
-	border:none;
-	outline:none;
-	background:none;
-	
-}
 
-.userid, .password{
+
+.email, .password{
 	display:block;
 	border-radius:38px;
 	border:1px solid rgba(0,0,0,0.2);
@@ -65,12 +57,6 @@ body{
 	
 }
 
-.form svg{
-	height:25px;
-	margin-bottom:-5px;
-	margin-left:10px;
-	margin-right:5px;
-}
 
 .options{
 	display:flex;
@@ -90,6 +76,11 @@ button.signin-btn{
 	color:#fff;
 	margin-bottom:5px;
 }
+
+button.signin-btn:hover{
+	background-color:#3C57A8;
+}
+
 
 .sign-up{
 	text-align:center;
