@@ -1,5 +1,6 @@
 package com.NovusBank.web;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import org.springframework.stereotype.Controller;
@@ -45,7 +46,10 @@ public class WebController {
     }   
 	
 	@RequestMapping("/test")  
-    public String getDatabase()  {  
+    public String getDatabase(Model model)  {  
+		
+		dbc.newAccount("alexjquigley@hotmail.com");
+		
 		
 		User user = dbc.getUser("alexjquigley@hotmail.com");
 		
@@ -54,10 +58,18 @@ public class WebController {
 		
 		Set<Account> accounts = user.getAccounts();
 		
-		Account account = (Account)accounts.iterator().next();
+		Iterator it = accounts.iterator();
+		
+		Account account = (Account)it.next();
 		
 		System.out.println(account.getAccountNumber());
 		
+		account = (Account)it.next();
+		
+		System.out.println(account.getAccountNumber());
+		
+		
+		model.addAttribute("userLogin", new User());
         return "login";  
     }   
 	

@@ -44,7 +44,7 @@ public class DatabaseController {
 		//Re-creates account if initialAccount.AccountNumber is already in the database
 		//low chance of it happening twice so quick fix for now
 		catch (Exception e) {
-			System.out.println("Error adding user to database, probably accountNumber already in use : " + e);
+			System.out.println("Error adding user to database, probably because accountNumber already in use : " + e);
 			
 			initialAccount = new Account();
 			
@@ -64,4 +64,43 @@ public class DatabaseController {
 		return tempUser;
 	}
 	
+	public void newAccount(String email) {
+		Session session = sf.openSession();
+		User tempUser = session.get(User.class, email);
+		
+		Account tempAccount = new Account();
+		tempAccount.setUser(tempUser);
+		
+		try {
+			session = sf.openSession(); 
+			Transaction t = session.beginTransaction();  
+			session.save(tempAccount);
+		    t.commit();
+		    session.close();		    
+		}
+		//Re-creates account if initialAccount.AccountNumber is already in the database
+		//low chance of it happening twice so quick fix for now
+		catch (Exception e) {
+			System.out.println("Error adding Account to database, probably because accountNumber already in use : " + e);
+			
+			tempAccount = new Account();
+			tempAccount.setUser(tempUser);
+			
+			session = sf.openSession(); 
+			Transaction t = session.beginTransaction(); 
+ 
+			session.save(tempAccount);
+		    t.commit();
+		}
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
