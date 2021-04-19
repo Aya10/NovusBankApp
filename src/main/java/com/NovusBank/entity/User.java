@@ -1,40 +1,26 @@
 package com.NovusBank.entity;
 
+import java.sql.Date;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	
-	@Id 
-	private long accountNumber;
+	@Id
+	private String email;
 	
-	private String firstName, lastName, email, phoneNumber;
+	private String firstName, lastName, phoneNumber, password;
 	
-	private int dob;
+	private Date dob;
 	
-//	public User(String firstName, String lastName, int dob, String email, String phoneNumber) {
-//		super();
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.dob = dob;
-//		this.email = email;
-//		this.phoneNumber = phoneNumber;
-//	}
+	@OneToMany(targetEntity=Account.class, mappedBy="user")
+	private Set<Account> accounts;
 	
-	
-	public long getAccountNumber() {
-		return accountNumber;
-	}
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -47,10 +33,10 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getDob() {
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(int dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 	public String getEmail() {
@@ -65,7 +51,16 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
+	public Set<Account> getAccounts(){
+		return accounts;
+	}
 	
 	
 }

@@ -16,7 +16,7 @@
 		
 		<div class="title">Novus Bank</div>
 		<div class="subtitle">Banking with Novus</div>
-		<form:form method="POST" modelAttribute="userForm" action="/formSubmitted">
+		<form:form method="POST" modelAttribute="userForm" action="/registered">
 		
 		<form:label path="firstName">
 			<form:input path="firstName" id="firstName" type="text" placeholder="First Name"></form:input>
@@ -27,7 +27,7 @@
 		<label for="lastName"> Last Name </label>
 		</form:label>
 		<form:label path="dob">
-			<form:input path="dob" id="dob" type="int" placeholder="Date of Birth"></form:input>
+			<form:input path="dob" id="dob" type="date" placeholder="Date of Birth"></form:input>
 		<label for="dob"> Date of Birth </label>
 		</form:label>
 		<form:label path="email">
@@ -38,7 +38,11 @@
 			<form:input path="phoneNumber" id="phoneNumber" type="text" placeholder="Phone Number"></form:input>
 		<label for="phoneNumber"> Phone Number</label>
 		</form:label>
-
+		<form:label path="password">
+			<form:input path="password" id="password" type="password" placeholder="Password"></form:input>
+		<label for="password"> Password</label>
+		</form:label>
+		
 			<button class="signup-btn" type="submit">Sign Up</button>
 		</form:form>
 		<div class="sign-in">
