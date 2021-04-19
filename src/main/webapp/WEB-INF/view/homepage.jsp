@@ -18,7 +18,7 @@
 		<ul class="menu">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Transfers</a></li>
-		<li><a href="#">Log Out</a></li>		
+		<li><a href="/">Log Out</a></li>		
 		</ul>
 	</header>
 	
