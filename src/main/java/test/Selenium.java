@@ -13,9 +13,11 @@ public class Selenium {
 		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://localhost8090/");
-		driver.findElement(By.xpath("")).click();	
+		driver.findElement(By.xpath("email")).click();	
 		driver.findElement(By.xpath("")).click();			
-		driver.findElement(By.xpath("")).click();		driver.findElement(By.xpath("//a[@value='ATQ']")).click();
+		driver.findElement(By.xpath("")).click();		
+		
+		driver.findElement(By.xpath("")).click();
 
 
 
@@ -27,7 +29,7 @@ public class Selenium {
 //		for(int i = 0; i < 6; i++) 		
 //			
 			//driver.findElement(By.xpath("")).click();				
-		
+//		
 		System.out.println(driver.findElement(By.xpath("")).getText());
 
 		driver.manage().window().maximize();
