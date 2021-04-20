@@ -20,7 +20,7 @@ public class WebController {
 	@RequestMapping("/")  
     public String Login(Model model)  {  
 		model.addAttribute("userLogin", new User());
-        return "homepage";  
+        return "login";  
 
     }   
 	
@@ -31,17 +31,19 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/registered", method=RequestMethod.POST)
-	public String form(@ModelAttribute("userForm") User user) {
+	public String form(@ModelAttribute("userForm") User user, Model model) {
 		dbc.addUser(user);
+		
+		model.addAttribute("user", user);
+		
 		return "homepage";
 	}
 	
 	
 	@RequestMapping("/login")  
-    public String LoginSubmitted(@ModelAttribute("userLogin") User user)  {  
+    public String LoginSubmitted(@ModelAttribute("userLogin") User user, Model model)  {  
 		
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
+		model.addAttribute("user", user);
 		
         return "homepage";  
     }   
@@ -59,7 +61,7 @@ public class WebController {
 		
 		Set<Account> accounts = user.getAccounts();
 		
-		Iterator it = accounts.iterator();
+		Iterator<Account> it = accounts.iterator();
 		
 		Account account = (Account)it.next();
 		

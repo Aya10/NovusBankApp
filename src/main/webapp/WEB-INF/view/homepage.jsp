@@ -26,6 +26,11 @@
     <div class="item">
     	<h2>Welcome</h2>
     	<h5>Accounts:</h5>
+    	
+    	<div>
+    	
+    	</div>
+    	
     </div>
     <div class="item">
     	<h2>Transfer</h2>
