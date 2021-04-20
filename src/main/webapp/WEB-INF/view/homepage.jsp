@@ -27,10 +27,19 @@
     	<h2>Welcome</h2>
     	<h5>Accounts:</h5>
     	
-    	<div>
+    	<div id="accounts">
     	
     	</div>
+    	<script>
+    	console.log("${user}");
+    	var set = ${user.accounts};
+    	var it = set.accounts;
     	
+    	
+    	
+//    	it.next();
+    	
+    	</script>
     </div>
     <div class="item">
     	<h2>Transfer</h2>
