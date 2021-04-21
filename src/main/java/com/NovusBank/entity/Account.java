@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class Account {
 
 	@Id
-	private Long accountNumber;
+	private long accountNumber;
 
 	private int balance;
 	
@@ -26,7 +26,7 @@ public class Account {
 		this.user = user;
 	}
 	
-	public Long getAccountNumber() {
+	public long getAccountNumber() {
 		return accountNumber;
 	}
 

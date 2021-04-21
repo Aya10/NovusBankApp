@@ -26,20 +26,39 @@
     <div class="item">
     	<h2>Welcome</h2>
     	<h5>Accounts:</h5>
+    	<%
+    	int length = (int)request.getAttribute("lengthAcc"); 
     	
-    	<div id="accounts">
+		for (int i=0; i<length; i++){
+
+		   	String tempAcc = "accNum" + i;
+	    	String tempBal = "accBal" + i;
+	    	
+		   	long tempAccountNumber = (long)request.getAttribute(tempAcc);
+		   	int tempBalance = (int)request.getAttribute(tempBal);
+		   	
+	    	System.out.println(tempAccountNumber);
+	    	System.out.println(tempBalance);	   	    		
+		
+    	%>  
+    	<a href="/">
+	    	<button type="button" class = "amount">
+	    	
+	    	Account Number : <% out.println(tempAccountNumber); %>
+	    	<br>
+	    	Balance : <% out.println(tempBalance); %>
+	    	
+	    	</button>
+	    </a>
+    		<%
+		}
+    		%>
+    	 
     	
-    	</div>
-    	<script>
-    	console.log("${user}");
-    	var set = ${user.accounts};
-    	var it = set.accounts;
     	
     	
     	
-//    	it.next();
-    	
-    	</script>
+
     </div>
     <div class="item">
     	<h2>Transfer</h2>
