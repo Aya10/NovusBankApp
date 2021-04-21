@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="assests/css/homestyle.css">
+<link rel="stylesheet" href="assests/css/transferstyle.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 
 <link
@@ -23,13 +23,24 @@
 	<h2>Novus Banking</h2>
 	<p>Banking at Novus</p>
 	<div class="container">
+  
     <div class="item">
-    	<h2>Welcome</h2>
-    	<h5>Accounts:</h5>
-    	<div>
-    	</div>    	
+    	<h2>Transfer</h2>
+    	<div class="account">
+				<div class="form">
+				<input class="account" type="text" placeholder="Account Number"/>
+				</div>
+			</div>
+			
+    	<div class="amount">
+				<div class="form">
+				<input class="amount" type="text" placeholder="Amount"/>
+				</div>
+			</div>
+			
+			<button class="submit-btn" type="submit">Submit</button>
+			
     </div>
-
   </div>
 </div>
 
