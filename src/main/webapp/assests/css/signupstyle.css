@@ -10,7 +10,7 @@ body{
 
 .signup-div{
 	margin:100px auto;
-	width: 350px;
+	width: 400px;
 	padding: 60px;
 	background-color:#FFFFFF;
 	
@@ -47,9 +47,7 @@ body{
 	margin-top:30px;
 }
 
-
-
-.fname, .lname, .dob, .email, .phone{
+.fname, .lname, .dob, .email, .phone, .password{
 	display:block;
 	border-radius:38px;
 	border:1px solid rgba(0,0,0,0.2);

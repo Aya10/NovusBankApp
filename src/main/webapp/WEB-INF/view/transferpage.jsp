@@ -33,16 +33,15 @@
     	<h2>Transfer</h2>
     	<form method="POST" action="/transferSubmit">
     	<div class="account">
+			<input class="ac" name="accountNum" type="text" placeholder="Account Number"/>
 
-				<input class="account" name="accountNum" type="text" placeholder="Account Number"/>
-
-			</div>
+		</div>
 			
     	<div class="amount">
+			<input class="am" name="amount" type="text" placeholder="Amount"/>
 
-				<input class="amount" name="amount" type="text" placeholder="Amount"/>
-
-			</div>
+		</div>
+			
 			<input type="hidden" name="accountSender" value = <% out.println((long)request.getAttribute("accountNum")); %>/>
 			<button class="submit-btn" type="submit">Submit</button>
 		</form>

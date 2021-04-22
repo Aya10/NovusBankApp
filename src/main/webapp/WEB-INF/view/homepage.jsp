@@ -15,11 +15,7 @@
 <div class="banner-area">
 	<header>
 		<a href="#" class="logo">Novus</a>
-		<form action="/newAccount" method="GET">
-		<button class="button" type="submit" name="newAccount" value = <% out.println((String)request.getAttribute("user")); %>>
-		Add Account
-		</button>
-		</form>
+		
 		<a href="/" class="logout">Log Out</a>
 		
 	</header>
@@ -27,6 +23,11 @@
 <div class="banner-text">
 	<h2>Novus Banking</h2>
 	<p>Banking at Novus</p>
+	<form action="/newAccount" method="GET">
+		<button class="button" type="submit" name="newAccount" value = <% out.println((String)request.getAttribute("user")); %>>
+		Add Account
+		</button>
+		</form>
 	<div class="container">
     <div class="item">
     	<h2>Welcome</h2>
