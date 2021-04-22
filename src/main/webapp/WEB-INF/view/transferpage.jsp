@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,32 +15,37 @@
 
 <div class="banner-area">
 	<header>
-		<a href="#" class="logo">novus</a>
+		<form action="/homepage" method="GET">
+		<button class="logo" type="submit" name="backToHome" value = <% out.println((String)request.getAttribute("user")); %>>
+		Novus	Back to Account Page
+		</button>
+		</form>
 		<a href="/" class="logout">Log Out</a>
 		
 	</header>
 </div>
 <div class="banner-text">
 	<h2>Novus Banking</h2>
-	<p>Banking at Novus</p>
+	<p>Account: <% out.println((long)request.getAttribute("accountNum")); %></p>
 	<div class="container">
   
     <div class="item">
     	<h2>Transfer</h2>
+    	<form method="POST" action="/transferSubmit">
     	<div class="account">
-				<div class="form">
-				<input class="account" type="text" placeholder="Account Number"/>
-				</div>
+
+				<input class="account" name="accountNum" type="text" placeholder="Account Number"/>
+
 			</div>
 			
     	<div class="amount">
-				<div class="form">
-				<input class="amount" type="text" placeholder="Amount"/>
-				</div>
+
+				<input class="amount" name="amount" type="text" placeholder="Amount"/>
+
 			</div>
-			
+			<input type="hidden" name="accountSender" value = <% out.println((long)request.getAttribute("accountNum")); %>/>
 			<button class="submit-btn" type="submit">Submit</button>
-			
+		</form>
     </div>
   </div>
 </div>

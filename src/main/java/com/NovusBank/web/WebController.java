@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.NovusBank.application.DatabaseController;
 import com.NovusBank.entity.Account;
 import com.NovusBank.entity.User;
@@ -30,39 +32,12 @@ public class WebController {
 		model.addAttribute("userForm", new User());
 		return "signup";
 	}
-	
-	@RequestMapping(value = "/registered", method=RequestMethod.POST)
-	public String form(@ModelAttribute("userForm") User user, Model model) {
-		dbc.addUser(user);
-		User userTemp = dbc.getUser(user.getEmail());
-		
-		
-//		Account[] accArray = (Account[]) userTemp.getAccounts();
-/*		Set set = userTemp.getAccounts();
-		Iterator<Account> itr = userTemp.getAccounts().iterator();
-		
-		long[] accountNumber = new long[set.size()];
-		int[] accountBalance = new int[set.size()];
-
-		int i=0;
-		while(itr.hasNext()) {
-			Account tempAcc = itr.next();
-			
-			accountNumber[i] = tempAcc.getAccountNumber();
-			accountBalance[i] = tempAcc.getBalance();
-			i++;
-		}		
-		
-		model.addAttribute("accountNum", accountNumber);
-		model.addAttribute("accountBal", accountBalance);
-		*/
-		
-		//could find length and set modelAtt ("length", .length)
-		//add all values as separate var to modelAtt. ("accNum" + i, accountNumber[i])
+	@RequestMapping("/homepage")
+	public String backToHomePage(@RequestParam(value="backToHome") String email, Model model) {
+		User userTemp = dbc.getUser(email);
 		int length = userTemp.getAccounts().size();
 		model.addAttribute("lengthAcc", length);
 		
-		Set set = userTemp.getAccounts();
 		Iterator<Account> itr = userTemp.getAccounts().iterator();
 		
 		int i=0;
@@ -73,10 +48,30 @@ public class WebController {
 			model.addAttribute("accBal" + i, tempAcc.getBalance());
 			
 			i++;
-		}	
+		}
+		model.addAttribute("user", email);
+		return "homepage";
+	}
+	
+	@RequestMapping(value = "/registered", method=RequestMethod.POST)
+	public String form(@ModelAttribute("userForm") User user, Model model) {
+		dbc.addUser(user);
+		User userTemp = dbc.getUser(user.getEmail());
 		
+		int length = userTemp.getAccounts().size();
+		model.addAttribute("lengthAcc", length);
 		
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
 		
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			model.addAttribute("accNum" + i, tempAcc.getAccountNumber());
+			model.addAttribute("accBal" + i, tempAcc.getBalance());
+			
+			i++;
+		}
+		model.addAttribute("user", userTemp.getEmail());
 		return "homepage";
 	}
 	
@@ -88,7 +83,6 @@ public class WebController {
 		int length = userTemp.getAccounts().size();
 		model.addAttribute("lengthAcc", length);
 		
-		Set set = userTemp.getAccounts();
 		Iterator<Account> itr = userTemp.getAccounts().iterator();
 		
 		int i=0;
@@ -99,31 +93,89 @@ public class WebController {
 			model.addAttribute("accBal" + i, tempAcc.getBalance());
 			
 			i++;
-		}	
-		
-		
-		
+		}
+		model.addAttribute("user", userTemp.getEmail());
 		return "homepage";
     }   
 	
-	@RequestMapping("/test")  
-    public String getDatabase(Model model)  {  
-		
-		dbc.newAccount("alexjquigley@hotmail.com");
-		
-		User user = dbc.getUser("alexjquigley@hotmail.com");
-		
-		Set<Account> accounts = user.getAccounts();
-		
-		Iterator<Account> it = accounts.iterator();
-		
-		Account account = (Account)it.next();
-		
-		account = (Account)it.next();
+	@RequestMapping("/transfer")  
+    public String getTransfer(@RequestParam(value="button") String accountNum, Model model)  {  
 
-		model.addAttribute("userLogin", new User());
-        return "login";  
+		System.out.println(accountNum);
+		
+		Account tempAccount = dbc.getAccount(Long.parseLong(accountNum));
+		
+		model.addAttribute("accountNum", tempAccount.getAccountNumber());
+		
+		model.addAttribute("user", tempAccount.getUser().getEmail());
+        return "transferpage";  
     }   
 	
+	@RequestMapping("/transferSubmit")  
+    public String submitTransfer(@RequestParam(value="accountNum") String accountNum, @RequestParam(value="amount") String tempAmount, @RequestParam(value="accountSender") String accountSender, Model model)  {  
+		
+		long sender = Long.parseLong(accountSender);
+		long reciever = Long.parseLong(accountNum);
+		int amount = Integer.parseInt(tempAmount);
+		
+		if(dbc.getAccount(sender).getBalance()<amount) {
+			model.addAttribute("accountNum", sender);	
+			model.addAttribute("user", dbc.getAccount(sender).getUser().getEmail());
+			return "transferpage";
+		}
+		
+		Account tempReciever = new Account();
+		tempReciever.setAccountNumber(reciever);
+		tempReciever.setBalance(dbc.getAccount(reciever).getBalance()+amount);
+		tempReciever.setUser(dbc.getAccount(reciever).getUser());
+		dbc.updateAccount(tempReciever);
+		
+		Account tempSender = new Account();
+		tempSender.setAccountNumber(sender);
+		tempSender.setBalance(dbc.getAccount(sender).getBalance()-amount);
+		tempSender.setUser(dbc.getAccount(sender).getUser());
+		dbc.updateAccount(tempSender);
+				
+		User userTemp = dbc.getAccount(sender).getUser();
+		int length = userTemp.getAccounts().size();
+		model.addAttribute("lengthAcc", length);
+		
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
+		
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			
+			model.addAttribute("accNum" + i, tempAcc.getAccountNumber());
+			model.addAttribute("accBal" + i, tempAcc.getBalance());
+			
+			i++;
+		}
+		model.addAttribute("user", userTemp.getEmail());
+        return "homepage";  
+    }   
+	
+	@RequestMapping("/newAccount")  
+    public String test(@RequestParam(value="newAccount") String email, Model model)  {  
+		dbc.newAccount(email);
+		User userTemp = dbc.getUser(email);
+		int length = userTemp.getAccounts().size();
+		model.addAttribute("lengthAcc", length);
+		
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
+		
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			
+			model.addAttribute("accNum" + i, tempAcc.getAccountNumber());
+			model.addAttribute("accBal" + i, tempAcc.getBalance());
+			
+			i++;
+		}
+		model.addAttribute("user", email);
+        return "homepage";  
+
+    }   
 	
 }

@@ -38,8 +38,8 @@ public class DatabaseController {
 			Transaction t = session.beginTransaction(); 
 			session.save(user);  
 			session.save(initialAccount);
-		    t.commit();
-		    session.close();		    
+		    t.commit();	 
+		    session.close();
 		}
 		//Re-creates account if initialAccount.AccountNumber is already in the database
 		//low chance of it happening twice so quick fix for now
@@ -53,6 +53,7 @@ public class DatabaseController {
 			session.save(user);  
 			session.save(initialAccount);
 		    t.commit();
+		    session.close();
 		}
 	}
 	
@@ -60,7 +61,6 @@ public class DatabaseController {
 		
 		Session session = sf.openSession();
 		User tempUser = session.get(User.class, email);
-		
 		return tempUser;
 	}
 	
@@ -72,11 +72,10 @@ public class DatabaseController {
 		tempAccount.setUser(tempUser);
 		
 		try {
-			session = sf.openSession(); 
 			Transaction t = session.beginTransaction();  
 			session.save(tempAccount);
-		    t.commit();
-		    session.close();		    
+		    t.commit();	 
+		    session.close();
 		}
 		//Re-creates account if initialAccount.AccountNumber is already in the database
 		//low chance of it happening twice so quick fix for now
@@ -86,13 +85,31 @@ public class DatabaseController {
 			tempAccount = new Account();
 			tempAccount.setUser(tempUser);
 			
-			session = sf.openSession(); 
 			Transaction t = session.beginTransaction(); 
  
 			session.save(tempAccount);
 		    t.commit();
+		    session.close();
 		}
 		
+	}
+	
+	public Account getAccount(long accountNum) {
+		
+		Session session = sf.openSession();
+		Account tempAccount = session.get(Account.class, accountNum);
+
+		return tempAccount;
+	}
+	
+	public void updateAccount(Account tempAccount) {
+		
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+		
+		session.update(tempAccount);
+		t.commit();
+		session.close();
 	}
 	
 }

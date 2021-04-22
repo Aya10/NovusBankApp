@@ -19,7 +19,10 @@ public class Account {
 	
 	public Account() {
 		accountNumber = (long) Math.floor(Math.random()*(99999999-10000000+1)+10000000);
-		balance = 0;
+		balance = 100;
+	}
+	public User getUser() {
+		return user;
 	}
 	
 	public void setUser(User user) {

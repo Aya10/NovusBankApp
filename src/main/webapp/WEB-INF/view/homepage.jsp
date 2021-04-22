@@ -14,7 +14,12 @@
 
 <div class="banner-area">
 	<header>
-		<a href="#" class="logo">novus</a>
+		<a href="#" class="logo">Novus</a>
+		<form action="/newAccount" method="GET">
+		<button class="button" type="submit" name="newAccount" value = <% out.println((String)request.getAttribute("user")); %>>
+		Add Account
+		</button>
+		</form>
 		<a href="/" class="logout">Log Out</a>
 		
 	</header>
@@ -26,6 +31,7 @@
     <div class="item">
     	<h2>Welcome</h2>
     	<h5>Accounts:</h5>
+    		<form action="/transfer" method="GET">
     	<%
     	int length = (int)request.getAttribute("lengthAcc"); 
     	
@@ -35,27 +41,20 @@
 	    	String tempBal = "accBal" + i;
 	    	
 		   	long tempAccountNumber = (long)request.getAttribute(tempAcc);
-		   	int tempBalance = (int)request.getAttribute(tempBal);
-		   	
-	    	System.out.println(tempAccountNumber);
-	    	System.out.println(tempBalance);	   	    		
-		
-    	%>  
-    	<a href="/">
-	    	<button type="button" class = "amount">
-	    	
+		   	int tempBalance = (int)request.getAttribute(tempBal);	
+		%>  
+
+	    	<button class="button" type="submit" name="button" value = <% out.println(tempAccountNumber); %>>
 	    	Account Number : <% out.println(tempAccountNumber); %>
 	    	<br>
 	    	Balance : <% out.println(tempBalance); %>
-	    	
 	    	</button>
-	    </a>
+	  	
     		<%
 		}
     		%>
-    				
+    	</form>	  
     </div>
-
   </div>
 </div>
 

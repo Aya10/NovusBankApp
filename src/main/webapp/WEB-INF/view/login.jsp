@@ -34,7 +34,7 @@
 						for="remember-me">Remember Me</label>
 				</div>
 				<div class="forgot-password">
-					<a href="/test">Forgot Password</a>
+					<a href="/">Forgot Password</a>
 				</div>
 			</div>
 
