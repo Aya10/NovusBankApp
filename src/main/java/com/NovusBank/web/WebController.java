@@ -1,5 +1,6 @@
 package com.NovusBank.web;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -33,8 +34,48 @@ public class WebController {
 	@RequestMapping(value = "/registered", method=RequestMethod.POST)
 	public String form(@ModelAttribute("userForm") User user, Model model) {
 		dbc.addUser(user);
+		User userTemp = dbc.getUser(user.getEmail());
 		
-		model.addAttribute("user", user);
+		
+//		Account[] accArray = (Account[]) userTemp.getAccounts();
+/*		Set set = userTemp.getAccounts();
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
+		
+		long[] accountNumber = new long[set.size()];
+		int[] accountBalance = new int[set.size()];
+
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			
+			accountNumber[i] = tempAcc.getAccountNumber();
+			accountBalance[i] = tempAcc.getBalance();
+			i++;
+		}		
+		
+		model.addAttribute("accountNum", accountNumber);
+		model.addAttribute("accountBal", accountBalance);
+		*/
+		
+		//could find length and set modelAtt ("length", .length)
+		//add all values as separate var to modelAtt. ("accNum" + i, accountNumber[i])
+		int length = userTemp.getAccounts().size();
+		model.addAttribute("lengthAcc", length);
+		
+		Set set = userTemp.getAccounts();
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
+		
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			
+			model.addAttribute("accNum" + i, tempAcc.getAccountNumber());
+			model.addAttribute("accBal" + i, tempAcc.getBalance());
+			
+			i++;
+		}	
+		
+		
 		
 		return "homepage";
 	}
@@ -42,10 +83,27 @@ public class WebController {
 	
 	@RequestMapping("/login")  
     public String LoginSubmitted(@ModelAttribute("userLogin") User user, Model model)  {  
+		User userTemp = dbc.getUser(user.getEmail());
 		
-		model.addAttribute("user", user);
+		int length = userTemp.getAccounts().size();
+		model.addAttribute("lengthAcc", length);
 		
-        return "homepage";  
+		Set set = userTemp.getAccounts();
+		Iterator<Account> itr = userTemp.getAccounts().iterator();
+		
+		int i=0;
+		while(itr.hasNext()) {
+			Account tempAcc = itr.next();
+			
+			model.addAttribute("accNum" + i, tempAcc.getAccountNumber());
+			model.addAttribute("accBal" + i, tempAcc.getBalance());
+			
+			i++;
+		}	
+		
+		
+		
+		return "homepage";
     }   
 	
 	@RequestMapping("/test")  
@@ -53,11 +111,7 @@ public class WebController {
 		
 		dbc.newAccount("alexjquigley@hotmail.com");
 		
-		
 		User user = dbc.getUser("alexjquigley@hotmail.com");
-		
-		System.out.println(user.getFirstName());
-		System.out.println(user.getLastName());
 		
 		Set<Account> accounts = user.getAccounts();
 		
@@ -65,13 +119,8 @@ public class WebController {
 		
 		Account account = (Account)it.next();
 		
-		System.out.println(account.getAccountNumber());
-		
 		account = (Account)it.next();
-		
-		System.out.println(account.getAccountNumber());
-		
-		
+
 		model.addAttribute("userLogin", new User());
         return "login";  
     }   
