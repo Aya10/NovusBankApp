@@ -55,7 +55,15 @@ public class WebController {
 	
 	@RequestMapping(value = "/registered", method=RequestMethod.POST)
 	public String form(@ModelAttribute("userForm") User user, Model model) {
-		dbc.addUser(user);
+		try {
+			dbc.addUser(user);
+		}
+		catch (Exception e) {
+			model.addAttribute("userLogin", new User());
+			return "errorRegister";
+		}
+		
+		
 		User userTemp = dbc.getUser(user.getEmail());
 		
 		int length = userTemp.getAccounts().size();
